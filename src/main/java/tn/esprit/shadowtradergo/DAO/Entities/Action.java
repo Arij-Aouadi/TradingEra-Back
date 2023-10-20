@@ -1,5 +1,6 @@
 package tn.esprit.shadowtradergo.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -30,8 +31,10 @@ public class Action {
     private Float dernier;
     private Float  volume;
     @OneToMany(mappedBy ="action")
+    @JsonIgnore
         List<Ordre> ordreList ;
     @OneToMany(mappedBy ="action1")
+            @JsonIgnore
     List<Option> optionList ;
 
 }
