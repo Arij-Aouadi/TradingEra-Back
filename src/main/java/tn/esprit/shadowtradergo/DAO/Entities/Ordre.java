@@ -21,7 +21,7 @@ import java.util.List;
 public class Ordre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    int idO ;
+    Long idO ;
     String strategie ;
     String symbol ;
     @Enumerated(EnumType.STRING)
@@ -37,14 +37,17 @@ public class Ordre implements Serializable {
     Date dateOrdre;
     @Enumerated(EnumType.STRING)
     TypeStatut statut ;
+    @JsonIgnore
     @ManyToOne
     Action action ;
+    @JsonIgnore
     @ManyToOne
     Option option ;
-    @JsonIgnore
     @ManyToMany
+    @JsonIgnore
     List<Position> Achat;
-    @JsonIgnore
+
     @ManyToMany
+    @JsonIgnore
     List<Position> Vente;
 }

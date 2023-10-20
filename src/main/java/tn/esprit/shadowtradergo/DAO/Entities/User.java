@@ -1,4 +1,5 @@
 package tn.esprit.shadowtradergo.DAO.Entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -45,6 +46,7 @@ public class User implements Serializable {
     String password ;
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     Set<Role> role;
+    @JsonIgnore
     @OneToOne
     Position position ;
     public String getMail() {

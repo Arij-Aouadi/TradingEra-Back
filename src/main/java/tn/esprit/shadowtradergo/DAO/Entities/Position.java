@@ -32,5 +32,6 @@ public class Position  implements Serializable {
     @ManyToMany(mappedBy = "Vente")
     List<Ordre> Vente ;
     @OneToOne(mappedBy = "position")
+    @JsonIgnore
      User user ;
 }
