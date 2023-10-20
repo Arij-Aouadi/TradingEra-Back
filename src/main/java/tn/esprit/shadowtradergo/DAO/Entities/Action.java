@@ -1,10 +1,11 @@
-package com.example.testingentities.DAO.Entities;
+package tn.esprit.shadowtradergo.DAO.Entities ;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.util.List;
+
 
 @Entity
 @Getter
