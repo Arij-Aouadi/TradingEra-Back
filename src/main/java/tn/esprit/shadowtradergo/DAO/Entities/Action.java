@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,5 +29,9 @@ public class Action {
     private Float  bas;
     private Float dernier;
     private Float  volume;
+    @OneToMany(mappedBy ="action")
+        List<Ordre> ordreList ;
+    @OneToMany(mappedBy ="action1")
+    List<Option> optionList ;
 
 }

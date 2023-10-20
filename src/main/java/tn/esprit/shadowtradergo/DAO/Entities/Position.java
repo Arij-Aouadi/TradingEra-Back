@@ -1,13 +1,12 @@
 package tn.esprit.shadowtradergo.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,4 +25,12 @@ public class Position  implements Serializable {
     Long prixfinale ;
     Long PPNR ;
     Long prixmoyen ;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "Achat")
+    List<Ordre> Achat;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "Vente")
+    List<Ordre> Vente ;
+    @OneToOne(mappedBy = "position")
+     User user ;
 }
