@@ -33,8 +33,11 @@ public class Option implements Serializable {
     @Enumerated(EnumType.STRING)
     Etat etat;
     @OneToMany(mappedBy ="option")
+    @JsonIgnore
+
     List<Ordre> ListO ;
     @ManyToOne
+            @JsonIgnore
     Action action1 ;
 
 
