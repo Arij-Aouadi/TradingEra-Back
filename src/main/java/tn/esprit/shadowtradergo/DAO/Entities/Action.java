@@ -23,7 +23,7 @@ public class Action {
     private Long idA;
     private String symbole;
     private String name;
-    private Double coursActuel;
+   private Double coursActuel;// ca sera une methode
     private Float variationEnPorcentage;
     private Float  ouverture;
     private Float haut;

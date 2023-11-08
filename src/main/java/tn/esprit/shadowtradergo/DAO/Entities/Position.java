@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,17 +21,22 @@ public class Position  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     Long idP ;
-    Long quantité ;
-    Long prixdumarché ;
-    Long prixfinale ;
-    Long PPNR ;
-    Long prixmoyen ;
+    String symbole;
+    String nom;
+    Long quantité;
+
+    Long valeurActuelle;
+    Date dateAchatVente;
+    Long prixAchat;
+    Long plusOuMoinsValue;
+    Double variation;
+
     @JsonIgnore
-    @ManyToMany(mappedBy = "Achat")
-    List<Ordre> Achat;
+    @ManyToMany(mappedBy = "achat")
+    List<Ordre> achat;
     @JsonIgnore
-    @ManyToMany(mappedBy = "Vente")
-    List<Ordre> Vente ;
+    @ManyToMany(mappedBy = "vente")
+    List<Ordre> vente ;
     @OneToOne(mappedBy = "position")
     @JsonIgnore
      User user ;
