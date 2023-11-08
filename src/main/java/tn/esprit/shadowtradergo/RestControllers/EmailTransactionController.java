@@ -3,15 +3,14 @@ package tn.esprit.shadowtradergo.RestControllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.security.SecureRandom;
 @RestController
+@CrossOrigin(origins = "*",maxAge=3600)
+
 public class EmailTransactionController {
     @Autowired
     public JavaMailSender emailSender;

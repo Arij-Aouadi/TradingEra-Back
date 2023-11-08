@@ -29,8 +29,10 @@ public class Ordre implements Serializable {
     @Enumerated(EnumType.STRING)
     TypeTransaction typetransaction ;
     int quantite;
-    float prixLimite;
+    float prixOrdre;
     float prixsousjacent ;
+    float prixStop;
+    float prixProfit ;
     @Enumerated(EnumType.STRING)
     TypeOrdre typeordre;
     String dureeValiditeOrdre;
@@ -45,9 +47,9 @@ public class Ordre implements Serializable {
     Option option ;
     @ManyToMany
     @JsonIgnore
-    List<Position> Achat;
+    List<Position> achat;
 
     @ManyToMany
     @JsonIgnore
-    List<Position> Vente;
+    List<Position> vente;
 }
