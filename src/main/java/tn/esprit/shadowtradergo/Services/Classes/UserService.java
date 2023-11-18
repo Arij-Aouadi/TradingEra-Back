@@ -20,6 +20,9 @@ import java.util.List;
 
 public class UserService implements IUserService {
 
+
+
+
     @Autowired
     private UserRepository userRepository;
     @Override
@@ -97,4 +100,5 @@ public class UserService implements IUserService {
     public User getConnectedUser(){
         return this.selectById(2L);
     }
+
 }

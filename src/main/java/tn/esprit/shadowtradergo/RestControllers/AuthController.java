@@ -34,7 +34,8 @@ import java.util.stream.Collectors;
 @Setter
 @RestController
 @AllArgsConstructor
-public class AuthController {
+public class
+AuthController {
 
 
     @Autowired
