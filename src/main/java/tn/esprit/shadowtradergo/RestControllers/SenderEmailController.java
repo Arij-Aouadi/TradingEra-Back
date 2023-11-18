@@ -1,12 +1,15 @@
 package tn.esprit.shadowtradergo.RestControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.shadowtradergo.DAO.Entities.Email;
 import tn.esprit.shadowtradergo.Services.Classes.EmailSenderService;
 @RestController
+@CrossOrigin(origins = "*",maxAge=3600)
+
 public class SenderEmailController {
 
 
