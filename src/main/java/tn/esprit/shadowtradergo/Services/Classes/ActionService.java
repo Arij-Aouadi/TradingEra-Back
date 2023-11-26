@@ -38,11 +38,11 @@ public class ActionService implements IActionService {
     }
 
     @Override
-    public Action selectById(Long idA) {
-        return actionRepository.findById(idA).get();    }
+    public Action selectById(Long idAction) {
+        return actionRepository.findById(idAction).get();    }
 
     @Override
-    public void deleteById(Long idA) {actionRepository.deleteById(idA);
+    public void deleteById(Long idAction) {actionRepository.deleteById(idAction);
 
     }
 
@@ -53,8 +53,8 @@ public class ActionService implements IActionService {
 
     }
     @Override
-    public Action getById(long idA) {
-        return actionRepository.findById(idA).get();
+    public Action getById(long idAction) {
+        return actionRepository.findById(idAction).get();
     }
 
     @Override

@@ -75,7 +75,7 @@ public class PositionService implements IPositionService {
         double revenus = 0.0;
 
         for (Ordre ordre : ordres) {
-            double prixDeMarche = actionRepository.findLatestCoursDeMarche(ordre.getAction().getIdA());
+            double prixDeMarche = actionRepository.findLatestCoursDeMarche(ordre.getAction().getIdAction());
             double valeurOrdre = ordre.getQuantite() * prixDeMarche;
 
             if ("ACHAT".equals(ordre.getTypeordre())) {
