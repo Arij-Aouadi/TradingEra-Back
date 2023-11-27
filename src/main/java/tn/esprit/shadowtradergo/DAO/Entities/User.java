@@ -39,11 +39,19 @@ public class User implements Serializable {
      String relationWithClient ;
      String Profession ;
      String NewQuestions;
-     String TypeProjets;
+     //changement
+
+    // String TypeProjets;
      String TheuserNumber;
+     //AJOUTER
+     int Rank ;
+     float score ; //float or int ??
     @NotNull
     @Size(min = 8,max = 50)
     String password ;
+
+
+     double revenue;
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     Set<Role> role;
     @JsonIgnore

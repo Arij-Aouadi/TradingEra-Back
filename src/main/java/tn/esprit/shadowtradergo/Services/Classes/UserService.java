@@ -91,10 +91,25 @@ public class UserService implements IUserService {
     }
 
 
-
     //TO Be changed later
     @Override
     public User getConnectedUser(){
         return this.selectById(2L);
     }
-}
+
+    @Override
+    public List<User> getRankedPlayers() {
+
+            List<User> users = userRepository.findAll();
+            users.sort((u1, u2) -> Double.compare(u2.getRevenue(), u1.getRevenue()));
+            for (int i = 0; i < users.size(); i++)
+            {
+                users.get(i).setRank(i + 1);
+            }
+            return users;
+        }
+
+    }
+
+
+

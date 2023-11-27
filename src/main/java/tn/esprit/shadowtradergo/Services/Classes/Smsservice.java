@@ -27,9 +27,9 @@ import java.util.List;
 public class Smsservice implements ISmsservice {
     private UserRepository userRepository;
     // identifiants Twilio
-   public static final String ACCOUNT_SID = "AC6b640e69cdcbba98231cd8490684790e";
-    public static final String AUTH_TOKEN = "77a1c436856df7e4aecf2411d4917bf2";
-    public static final String OUTGOING_SMS_NUMBER = "+13343453168";
+   public static final String ACCOUNT_SID = "AC3e06bfe243eb3273f78bcdd2e31fc9d2";
+    public static final String AUTH_TOKEN = "30bb26a6a1abbb0c1c5f64fa4b6e4baa";
+    public static final String OUTGOING_SMS_NUMBER = "+16173263407";
 
     @PostConstruct
     private void setup() {
