@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -28,8 +29,9 @@ public class Position  implements Serializable {
     Long valeurActuelle;
     Date dateAchatVente;
     Long prixAchat;
-    Long plusOuMoinsValue;
+    double plusOuMoinsValue;
     Double variation;
+    String statusPosition ;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "achat")
@@ -37,7 +39,13 @@ public class Position  implements Serializable {
     @JsonIgnore
     @ManyToMany(mappedBy = "vente")
     List<Ordre> vente ;
-    @OneToOne(mappedBy = "position")
+    @ManyToOne
     @JsonIgnore
-     User user ;
+    @JoinColumn(name = "user_id")
+    User user;
+    @Override
+    public int hashCode() {
+        return Objects.hash(idP); // Utilisez uniquement l'ID pour éviter la récursion
+    }
+
 }

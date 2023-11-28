@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface PositionRepository  extends JpaRepository<Position, Long> {
     Position findByUser_Id(Long userId);
+    List<Position> findByUserId(Long userId);
+
 }
