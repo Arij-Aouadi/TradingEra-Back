@@ -25,6 +25,7 @@ public class Action {
     private String name;
    private Double coursActuel;// ca sera une methode
     private Float variationEnPorcentage;
+    private Float variation ;
     private Float  ouverture;
     private Float haut;
     private Float  bas;
