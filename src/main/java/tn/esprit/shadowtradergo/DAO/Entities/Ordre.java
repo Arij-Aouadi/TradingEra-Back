@@ -3,6 +3,7 @@ package tn.esprit.shadowtradergo.DAO.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,12 +29,13 @@ public class Ordre implements Serializable {
     @Enumerated(EnumType.STRING)
     TypeTransaction typetransaction ;
     int quantite;
-    float prixLimite;
+    float prixOrdre;
     float prixsousjacent ;
+    float prixStop;
+    float prixProfit ;
     @Enumerated(EnumType.STRING)
     TypeOrdre typeordre;
     String dureeValiditeOrdre;
-    @Temporal(TemporalType.TIMESTAMP)
     Date dateOrdre;
     @Enumerated(EnumType.STRING)
     TypeStatut statut ;
@@ -45,11 +47,11 @@ public class Ordre implements Serializable {
     Option option ;
     @ManyToMany
     @JsonIgnore
-    List<Position> Achat;
+    List<Position> achat;
 
     @ManyToMany
     @JsonIgnore
-    List<Position> Vente;
+    List<Position> vente;
     @ManyToOne
     @JsonIgnore
     Game game;

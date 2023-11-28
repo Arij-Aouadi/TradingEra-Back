@@ -6,7 +6,9 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -20,18 +22,30 @@ public class Position  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     Long idP ;
-    Long quantité ;
-    Long prixdumarché ;
-    Long prixfinale ;
-    Long PPNR ;
-    Long prixmoyen ;
+    String symbole;
+    String nom;
+    Long quantité;
+
+    Long valeurActuelle;
+    Date dateAchatVente;
+    Long prixAchat;
+    double plusOuMoinsValue;
+    Double variation;
+    String statusPosition ;
+
     @JsonIgnore
-    @ManyToMany(mappedBy = "Achat")
-    List<Ordre> Achat;
+    @ManyToMany(mappedBy = "achat")
+    List<Ordre> achat;
     @JsonIgnore
-    @ManyToMany(mappedBy = "Vente")
-    List<Ordre> Vente ;
-    @OneToOne(mappedBy = "position")
+    @ManyToMany(mappedBy = "vente")
+    List<Ordre> vente ;
+    @ManyToOne
     @JsonIgnore
-     User user ;
+    @JoinColumn(name = "user_id")
+    User user;
+    @Override
+    public int hashCode() {
+        return Objects.hash(idP); // Utilisez uniquement l'ID pour éviter la récursion
+    }
+
 }

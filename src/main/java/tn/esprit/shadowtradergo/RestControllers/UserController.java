@@ -10,11 +10,10 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*",maxAge=3600)
 
 public class UserController {
     private IUserService iUserService;
-
     @GetMapping("/admins/user/showall")
     public List<User> afficherUser() {
 
@@ -28,28 +27,23 @@ public class UserController {
 
     }
 
-    @PutMapping("/modifierUser")
-    public User edit(@RequestBody User user) {
-        return iUserService.edit(user);
-    }
-
-    @DeleteMapping("/deleteUserbyid/{id}")
-    public void deletebyid(@PathVariable long id) {
-        iUserService.deleteById(id);
-    }
-
-    @DeleteMapping("/deleteUser")
-    public void deletebyobject(@RequestBody User user) {
-        iUserService.delete(user);
-    }
+    @PutMapping ("/modifierUser")
+    public User edit(@RequestBody User user){
+        return iUserService.edit(user);}
+    @DeleteMapping ("/deleteUserbyid/{id}")
+    public void deletebyid (@PathVariable long id){
+        iUserService.deleteById(id);}
+    @DeleteMapping ("/deleteUser")
+    public void deletebyobject (@RequestBody User user){
+        iUserService.delete(user);}
 
     @GetMapping("/currentUser")
-    public String current() {
+    public  String current (){
         return iUserService.getCurrentUser().getUsername();
     }
 
     /*@PutMapping("/assignAccountToUser/{id}/{num}")
-    public User assignSkierToPiste(@PathVariable long id, @PathVariable int num){ZE
+    public User assignSkierToPiste(@PathVariable long id, @PathVariable int num){
         return iUserService.assignAccountToUser(id,num);
     }*/
     @GetMapping("/rankuser")
