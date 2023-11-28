@@ -49,7 +49,9 @@ public class User implements Serializable {
     @NotNull
     @Size(min = 8,max = 50)
     String password ;
-
+    //AJOUTER
+    int Rank ;
+    float score ; //float or int ??
 
      double revenue;
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
