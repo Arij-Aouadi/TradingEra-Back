@@ -1,8 +1,10 @@
 package tn.esprit.shadowtradergo.Services.Interfaces;
 
+import tn.esprit.shadowtradergo.DAO.Entities.Game;
 import tn.esprit.shadowtradergo.DAO.Entities.Ordre;
 import tn.esprit.shadowtradergo.DAO.Entities.User;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IOrdreService {
@@ -17,4 +19,5 @@ public interface IOrdreService {
     Ordre getById(long id);
 
     void deleteAll(List<Ordre> list);
+
 }

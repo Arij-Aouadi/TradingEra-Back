@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.shadowtradergo.DAO.Entities.Game;
 import tn.esprit.shadowtradergo.DAO.Entities.Ordre;
 import tn.esprit.shadowtradergo.DAO.Entities.User;
 import tn.esprit.shadowtradergo.DAO.Repositories.OrdreRepository;
 import tn.esprit.shadowtradergo.Services.Interfaces.IOrdreService;
 
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @AllArgsConstructor
 @Service
@@ -64,5 +66,8 @@ public class OrdreService implements IOrdreService {
     public void deleteAll(List<Ordre> list) {
         ordreRepository.deleteAll(list);
     }
+
+
+
 }
 

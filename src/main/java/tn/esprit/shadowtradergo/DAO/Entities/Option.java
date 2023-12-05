@@ -30,8 +30,9 @@ public class Option implements Serializable {
     float bas ;
     float  dernier ;
     float volume ;
-    @Enumerated(EnumType.STRING)
-    Etat etat;
+    float prime ;
+ //   @Enumerated(EnumType.STRING)
+   // Etat etat;
     @OneToMany(mappedBy ="option")
     @JsonIgnore
 

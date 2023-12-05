@@ -52,4 +52,8 @@ public class Ordre implements Serializable {
     @ManyToMany
     @JsonIgnore
     List<Position> vente;
+    @ManyToOne
+    @JsonIgnore
+    Game game;
+
 }
