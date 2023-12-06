@@ -11,7 +11,9 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "*",maxAge=3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
+
+
 public class ActionController {
     private IActionService iActionService ;
     @PostMapping("/Action/add")

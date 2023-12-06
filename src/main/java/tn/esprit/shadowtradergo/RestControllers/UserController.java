@@ -42,6 +42,12 @@ public class UserController {
         return iUserService.getCurrentUser().getUsername();
     }
 
+    @GetMapping("/NiveauUser")
+    public  String Niveau (){
+        return iUserService.getCurrentUser().getNiveau();
+    }
+
+
     /*@PutMapping("/assignAccountToUser/{id}/{num}")
     public User assignSkierToPiste(@PathVariable long id, @PathVariable int num){
         return iUserService.assignAccountToUser(id,num);

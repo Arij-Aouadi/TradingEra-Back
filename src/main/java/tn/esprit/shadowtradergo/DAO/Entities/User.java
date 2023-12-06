@@ -46,6 +46,7 @@ public class User implements Serializable {
      String TheuserNumber;
      double Solde ;
      double revenu ;
+     String niveau;
     @NotNull
     @Size(min = 8,max = 50)
     String password ;
