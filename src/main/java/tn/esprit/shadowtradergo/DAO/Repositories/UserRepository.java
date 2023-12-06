@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User,Long> {
+
+
+
     //select user selon username
     Optional<User> findByUsername (String userName);
 
@@ -31,6 +34,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     //----Sarra---
     @Query (value = "SELECT email from User u join Account a on u.cin = a.user_id where account_num=:num", nativeQuery = true)
     String retrieveEmailByAccounNum(@Param("num") int num );
+
 //    @Query (value = "SELECT username from User u join Account a on u.cin = a.user_id where a.rib=:num", nativeQuery = true)
 //    String retrieveUsernameByAccounNum(@Param("num") long num );
 //    @Query (value = "SELECT username from User u  where u.cin=:num", nativeQuery = true)
