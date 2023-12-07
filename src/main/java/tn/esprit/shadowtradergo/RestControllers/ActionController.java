@@ -11,9 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "*", maxAge = 3600)
-
-
+@CrossOrigin(origins = "*",maxAge=3600)
 public class ActionController {
     private IActionService iActionService ;
     @PostMapping("/Action/add")
@@ -28,19 +26,19 @@ public class ActionController {
         return list ;
     }
 
-    @GetMapping("/afficherActionAvecId/{idA}")
-    public Action afficherActionAvecId(@PathVariable long idA)
+    @GetMapping("/afficherActionAvecId/{IdAction}")
+    public Action afficherActionAvecId(@PathVariable long IdAction)
     {
-        return iActionService.selectById(idA);
+        return iActionService.selectById(IdAction);
 
     }
 
     @PutMapping("/modifierAction")
     public Action edit(@RequestBody Action action){
         return iActionService.edit(action);}
-    @DeleteMapping ("/deleteActionbyidA/{idA}")
-    public void deletebyid (@PathVariable long idA){
-        iActionService.deleteById(idA);}
+    @DeleteMapping ("/deleteActionbyIdAction/{IdAction}")
+    public void deletebyid (@PathVariable long IdAction){
+        iActionService.deleteById(IdAction);}
     @DeleteMapping ("/deleteAction")
     public void deletebyobject (@RequestBody Action action){
         iActionService.delete(action);}
