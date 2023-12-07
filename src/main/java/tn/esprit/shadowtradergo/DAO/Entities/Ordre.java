@@ -33,10 +33,14 @@ public class Ordre implements Serializable {
     float prixsousjacent ;
     float prixStop;
     float prixProfit ;
+    float prixLimite ;
+
     @Enumerated(EnumType.STRING)
     TypeOrdre typeordre;
     String dureeValiditeOrdre;
     Date dateOrdre;
+    private int quantiteAchat;
+    private int quantiteVente;
     @Enumerated(EnumType.STRING)
     TypeStatut statut ;
     @JsonIgnore
@@ -55,5 +59,7 @@ public class Ordre implements Serializable {
     @ManyToOne
     @JsonIgnore
     Game game;
-
+    private void recalculerQuantite() {
+        this.quantite = quantiteAchat + quantiteVente;
+    }
 }

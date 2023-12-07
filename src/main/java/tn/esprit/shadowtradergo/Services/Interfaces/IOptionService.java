@@ -19,8 +19,5 @@ public interface IOptionService {
     Option getById(long id);
 
 
-
-
-
-
+    Option addOption(Option option, long actionId);
 }
