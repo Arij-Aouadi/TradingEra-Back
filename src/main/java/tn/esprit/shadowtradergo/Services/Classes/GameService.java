@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.shadowtradergo.DAO.Entities.Game;
 import tn.esprit.shadowtradergo.DAO.Entities.Ordre;
+import tn.esprit.shadowtradergo.DAO.Entities.User;
 import tn.esprit.shadowtradergo.DAO.Repositories.GameRepository;
 import tn.esprit.shadowtradergo.DAO.Repositories.OrdreRepository;
+import tn.esprit.shadowtradergo.DAO.Repositories.UserRepository;
 import tn.esprit.shadowtradergo.Services.Interfaces.IGameService;
 
 import java.time.LocalDateTime;
@@ -30,33 +32,31 @@ public class GameService implements IGameService {
     GameRepository gameRepository;
     @Autowired
     OrdreRepository orderRepository;
+    @Autowired
+    UserRepository userRepository;
 
+    @Override
+    public List<Map<String, Object>> getRankedPlayers() {
+        List<User> users = userRepository.findAll();
 
-////////METHODE QUI AIDE A AVOIR L'HISTORIQUE DE CHAQUE JEUX
-   /* @Override
-    public List<Ordre> getHistoriqueAchatVente(Long idGame) {
-        Optional<Game> optionalGame = gameRepository.findById(idGame);
-        if (optionalGame.isPresent()) {
-            Game game = optionalGame.get();
-            // Charger les ordres associés au jeu depuis la base de données
-            List<Ordre> ordres = game.getOrdres();
+        // Triez les utilisateurs par revenu en ordre décroissant
+        users.sort((u1, u2) -> Double.compare(u2.getRevenu(), u1.getRevenu()));
 
-            // Filtrer les ordres en fonction de la date d'aujourd'hui
-            LocalDate today = LocalDate.now();
-            List<Ordre> filteredOrdres = ordres.stream()
-                    .filter(ordre -> ordre.getDateOrdre().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().isEqual(today))
-                    .collect(Collectors.toList());
+        List<Map<String, Object>> result = new ArrayList<>();
 
-            // Trier les ordres filtrés par date décroissante
-            Collections.sort(filteredOrdres, Comparator.comparing(Ordre::getDateOrdre).reversed());
+        for (User user : users) {
+            Map<String, Object> userMap = new HashMap<>();
+            userMap.put("rank", user.getRank());
+            userMap.put("username", user.getUsername());
+            userMap.put("revenue", user.getRevenu());
 
-            return filteredOrdres;
-        } else {
-            // Gérer le cas où le jeu avec l'ID spécifié n'est pas trouvé.
-            return Collections.emptyList();
+            result.add(userMap);
         }
+
+        return result;
     }
-*/
+
+
 
 
 }

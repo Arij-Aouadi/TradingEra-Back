@@ -1,5 +1,6 @@
 package tn.esprit.shadowtradergo.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -32,11 +34,15 @@ public class Ordre implements Serializable {
     float prixOrdre;
     float prixsousjacent ;
     float prixStop;
+
     float prixProfit ;
+    float profitandloss;
     @Enumerated(EnumType.STRING)
     TypeOrdre typeordre;
     String dureeValiditeOrdre;
+    @Temporal(TemporalType.TIMESTAMP)
     Date dateOrdre;
+
     @Enumerated(EnumType.STRING)
     TypeStatut statut ;
     @JsonIgnore
@@ -55,5 +61,8 @@ public class Ordre implements Serializable {
     @ManyToOne
     @JsonIgnore
     Game game;
+    @JsonIgnore
+    @OneToMany(mappedBy = "ordre", cascade = CascadeType.ALL)
+    Set<Historique> historiques;
 
 }

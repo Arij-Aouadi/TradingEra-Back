@@ -31,14 +31,15 @@ public class Option implements Serializable {
     float  dernier ;
     float volume ;
     float prime ;
- //   @Enumerated(EnumType.STRING)
-   // Etat etat;
+    @Enumerated(EnumType.STRING)
+
+    TypeOption typeOption;
     @OneToMany(mappedBy ="option")
     @JsonIgnore
 
     List<Ordre> ListO ;
     @ManyToOne
-            @JsonIgnore
+    @JsonIgnore
     Action action1 ;
 
 

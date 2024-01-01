@@ -3,9 +3,7 @@ package tn.esprit.shadowtradergo.RestControllers;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import tn.esprit.shadowtradergo.DAO.Entities.Option;
-import tn.esprit.shadowtradergo.DAO.Entities.Ordre;
-import tn.esprit.shadowtradergo.DAO.Entities.User;
+import tn.esprit.shadowtradergo.DAO.Entities.*;
 import tn.esprit.shadowtradergo.Services.Interfaces.IOptionService;
 
 import java.util.List;
@@ -65,5 +63,18 @@ public class OptionController {
 
 
 
+        @GetMapping("/calculate-profit-loss")
+        public Float calculateProfitOrLoss(
+                @RequestParam long optionId,
+                @RequestParam TypeOption typeOption,
+                @RequestParam TypeTransaction typeTransaction,
+                @RequestParam float prixSousJacentExpiration
+        ) {
 
-}
+                return  ( iOptionService.CalculerProfitOuPerteOption(optionId,typeOption,typeTransaction,prixSousJacentExpiration));
+            }
+        }
+
+
+
+

@@ -45,7 +45,6 @@ public class User implements Serializable {
     // String TypeProjets;
      String TheuserNumber;
      double Solde ;
-     double revenu ;
     @NotNull
     @Size(min = 8,max = 50)
     String password ;
@@ -53,7 +52,7 @@ public class User implements Serializable {
     int Rank ;
     float score ; //float or int ??
 
-     double revenue;
+     double revenu;
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     Set<Role> role;
     @JsonIgnore
@@ -72,4 +71,11 @@ public class User implements Serializable {
     public User(String username, String email, String encode) {
 
     }
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    Set<Historique> historiques;
+    @JsonIgnore
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    Set<Game> games;
 }

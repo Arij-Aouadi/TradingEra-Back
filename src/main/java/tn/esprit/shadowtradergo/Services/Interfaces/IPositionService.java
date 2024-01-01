@@ -23,6 +23,7 @@ public interface IPositionService {
     Position getById(long idP);
 
     void deleteAll(List<Position> list);
+
     public double calculerProfit(Position position) ;
 
 }

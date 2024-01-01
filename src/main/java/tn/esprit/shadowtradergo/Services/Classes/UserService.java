@@ -11,7 +11,10 @@ import tn.esprit.shadowtradergo.DAO.Entities.User;
 import tn.esprit.shadowtradergo.DAO.Repositories.UserRepository;
 import tn.esprit.shadowtradergo.Services.Interfaces.IUserService;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @AllArgsConstructor
@@ -97,19 +100,12 @@ public class UserService implements IUserService {
         return this.selectById(2L);
     }
 
-    @Override
-    public List<User> getRankedPlayers() {
 
-            List<User> users = userRepository.findAll();
-            users.sort((u1, u2) -> Double.compare(u2.getRevenue(), u1.getRevenue()));
-            for (int i = 0; i < users.size(); i++)
-            {
-                users.get(i).setRank(i + 1);
-            }
-            return users;
-        }
 
-    }
+
+
+
+}
 
 
 

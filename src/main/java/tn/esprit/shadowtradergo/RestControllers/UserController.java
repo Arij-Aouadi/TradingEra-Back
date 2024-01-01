@@ -46,10 +46,7 @@ public class UserController {
     public User assignSkierToPiste(@PathVariable long id, @PathVariable int num){
         return iUserService.assignAccountToUser(id,num);
     }*/
-    @GetMapping("/rankuser")
-    public List<User> getRankedPlayers() {
-        return  iUserService.getRankedPlayers();
-    }
+
 
 
 

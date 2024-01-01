@@ -21,19 +21,13 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     Long idGame;
-    String name;
+    String nomGame;
+    String username ;
+    int Rank ;
+    double revenue;
+    @ManyToOne
+    User user;
 
-    @Temporal(TemporalType.DATE)
-    Date startDate;
 
-    @Temporal(TemporalType.DATE)
-    Date endDate;
-
-    float initialBalance;
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
-    List<Ordre> orderList;
-
-    public List<Ordre> getOrdres() {
-        return this.orderList;}
 
 }
