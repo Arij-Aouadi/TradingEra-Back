@@ -30,6 +30,8 @@ public class HistoriqueService implements IHistoriqueService {
      OrdreRepository orderRepository;
      @Autowired
     GameRepository gameRepository;
+    @Autowired
+    private UserService userService;
 
   /*  @Override
     public List<Historique> getHistoriqueWithOrderDetailsByUserIdAndDateRange(Long userId, Date startDate, Date endDate) {
@@ -86,33 +88,34 @@ public class HistoriqueService implements IHistoriqueService {
 
         return historiqueList;
     }*/
-   @Override
-   public List<Historique> TableauHistorique(Long userId) {
-       User user = userRepository.findById(userId)
-               .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé avec l'ID : " + userId));
-
-       List<Historique> historiqueList = historiqueRepository.findByUserOrderByOrdreDateOrdreDesc(user);
-
-       for (Historique historique : historiqueList) {
-           Ordre order = historique.getOrdre();
-           if (order != null) {
-
-               historique.setSymbole(order.getSymbol());
-               historique.setTypeordre(order.getTypeordre());
-               historique.setQuantity(order.getQuantite());
-               historique.getProfitandloss();
-               historique.getRendement();
-               historique.getNomGame();
-
-           }
-       }
-
-       return historiqueList;
-   }
 
 
 
-}
+
+        public List<Historique> getTableauHistorique() {
+            User currentUser = userService.getCurrentUser();
+            List<Historique> historiqueList = historiqueRepository.findByOrderByOrdreDateOrdreDesc();
+
+            for (Historique historique : historiqueList) {
+                Ordre order = historique.getOrdre();
+                if (order != null) {
+                    historique.setDateOrdre(order.getDateOrdre());
+                    historique.setTypeSymbol(order.getTypeSymbol());
+                    historique.setSymbole(order.getSymbol());
+                    historique.setTypeordre(order.getTypeordre());
+                    historique.setQuantity(order.getQuantite());
+                    historique.setPrixOrdre(order.getPrixOrdre());
+                }
+            }
+
+            return historiqueList;
+        }
+    }
+
+
+
+
+
 
 
 

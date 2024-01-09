@@ -26,4 +26,9 @@ public interface IPositionService {
 
     public double calculerProfit(Position position) ;
 
+
+
+    double calculerGrossProfit();
+    double calculerGrossLoss();
+
 }

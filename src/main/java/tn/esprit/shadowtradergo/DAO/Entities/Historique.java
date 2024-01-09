@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -28,6 +29,8 @@ public class Historique {
 //    float prixsousjacent ;
   //  float prixStop;
    // float prixProfit ;
+   @Temporal(TemporalType.TIMESTAMP)
+   Date dateOrdre;
  Double profitandloss;
    Double rendement;
    String nomGame;
@@ -35,6 +38,10 @@ public class Historique {
   TypeTransaction typeTransaction;
     @Enumerated(EnumType.STRING)
     TypeOrdre typeordre;
+    /////prix !!!
+    float prixOrdre;
+
+
 
     @JsonIgnore
     @ManyToOne

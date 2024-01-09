@@ -11,7 +11,7 @@ import java.util.List;
 public interface HistoriqueRepository  extends JpaRepository<Historique, Long> {
 
 
-    List<Historique> findByUserOrderByOrdreDateOrdreDesc(User user);
 
-    List<Historique> findByUserAndOrdreDateOrdreBetweenOrderByOrdreDateOrdreDesc(User user, Date startDate, Date endDate);
+
+    List<Historique> findByOrderByOrdreDateOrdreDesc();
 }

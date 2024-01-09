@@ -10,5 +10,5 @@ public interface IHistoriqueService {
 
      //List<Historique> TableauHistorique(Long userId, Date startDate, Date endDate);
 
-     List<Historique> TableauHistorique(Long userId);
+     List<Historique> getTableauHistorique() ;
 }

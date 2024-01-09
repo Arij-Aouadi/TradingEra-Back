@@ -173,7 +173,7 @@ public class PositionService implements IPositionService {
 
         return 0;
     }
-
+// calcul du profit action
     @Override
     public double calculerProfit(Position position) {
         return (position.getValeurActuelle() - position.getPrixAchat()) * position.getQuantité();}
@@ -204,6 +204,49 @@ public class PositionService implements IPositionService {
         }
 
         return Collections.emptyList();
+    }
+
+
+
+
+
+    // Calcul du gross loss pour l'utilisateur actuel
+    public double calculerGrossLoss() {
+        List<Position> positions = getCurrentUserPositions();
+        double totalGrossLoss = 0.0;
+
+        for (Position userPosition : positions) {
+            if (!"archivé".equalsIgnoreCase(userPosition.getStatusPosition())) {
+                double grossLoss = Math.min(0, userPosition.getPrixAchat() - userPosition.getValeurActuelle()) * userPosition.getQuantité();
+                totalGrossLoss += grossLoss;
+            }
+        }
+
+        return totalGrossLoss;
+    }
+
+    // Calcul du gross profit pour l'utilisateur actuel
+    public double calculerGrossProfit() {
+        List<Position> positions = getCurrentUserPositions();
+        double totalGrossProfit = 0.0;
+
+        for (Position userPosition : positions) {
+            if (!"archivé".equalsIgnoreCase(userPosition.getStatusPosition())) {
+                double grossProfit = Math.max(0, userPosition.getValeurActuelle() - userPosition.getPrixAchat()) * userPosition.getQuantité();
+                totalGrossProfit += grossProfit;
+            }
+        }
+
+        return totalGrossProfit;
+    }
+
+    // Calcul du net profit pour l'utilisateur actuel
+    public double calculerNetProfit() {
+        double grossProfit = calculerGrossProfit();
+        double grossLoss = calculerGrossLoss();
+        double netProfit = grossProfit - grossLoss;
+
+        return netProfit;
     }
 
 }

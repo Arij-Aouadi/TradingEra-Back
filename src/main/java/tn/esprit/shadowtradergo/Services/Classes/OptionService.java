@@ -66,35 +66,35 @@ public class OptionService implements IOptionService {
     }
 
     @Override
-    public float CalculerProfitOuPerteOption (long optionId, TypeOption typeOption, TypeTransaction typeTransaction, float prixSousJacentExpiration) {
+    public float CalculerProfitOuPerteOption(long optionId, TypeOption typeOption, TypeTransaction typeTransaction, float prixSousJacentExpiration) {
+        // Vérification des paramètres
+        if (prixSousJacentExpiration <= 0) {
+            throw new IllegalArgumentException("Le prix sous-jacent à l'expiration doit être supérieur à zéro.");
+        }
 
-                Option option = optionRepository.findById(optionId).orElse(null);
+        Option option = optionRepository.findById(optionId).orElseThrow(() -> new EntityNotFoundException("Option not found"));
 
-                if (option == null) {
-                    throw new EntityNotFoundException("Option not found");
-                }
+        float profit = 0;
 
-                float resultat = 0;
-
-                if (typeOption == TypeOption.CALL) {
-                    if (typeTransaction == TypeTransaction.Buy) {
-                        // Achat d'un Call
-                        resultat = (prixSousJacentExpiration - option.getPrixExerciceOption()) - option.getPrime();
-                    } else if (typeTransaction == TypeTransaction.Sell) {
-                        // Vente d'un Call
-                        resultat = option.getPrime() - (prixSousJacentExpiration - option.getPrixExerciceOption());
-                    }
-                } else if (typeOption == TypeOption.PUT) {
-                    if (typeTransaction == TypeTransaction.Buy) {
-                        // Achat d'un Put
-                        resultat = (option.getPrixExerciceOption() - prixSousJacentExpiration) - option.getPrime();
-                    } else if (typeTransaction == TypeTransaction.Sell) {
-                        // Vente d'un Put
-                        resultat = option.getPrime() - (option.getPrixExerciceOption() - prixSousJacentExpiration);
-                    }
-                }
-
-                return resultat;
+        if (typeOption == TypeOption.CALL) {
+            if (typeTransaction == TypeTransaction.Buy) {
+                // Achat d'un Call
+                profit = (prixSousJacentExpiration - option.getPrixExerciceOption()) - option.getPrime();
+            } else if (typeTransaction == TypeTransaction.Sell) {
+                // Vente d'un Call
+                profit = option.getPrime() - (prixSousJacentExpiration - option.getPrixExerciceOption());
             }
+        } else if (typeOption == TypeOption.PUT) {
+            if (typeTransaction == TypeTransaction.Buy) {
+                // Achat d'un Put
+                profit = (option.getPrixExerciceOption() - prixSousJacentExpiration) - option.getPrime();
+            } else if (typeTransaction == TypeTransaction.Sell) {
+                // Vente d'un Put
+                profit = option.getPrime() - (option.getPrixExerciceOption() - prixSousJacentExpiration);
+            }
+        }
+
+        return profit;
+    }
 
 }
