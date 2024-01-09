@@ -21,8 +21,12 @@ public interface IOptionService {
     Option getById(long id);
 
 
+
     float CalculerProfitOuPerteOption(long optionId, TypeOption typeOption, TypeTransaction typeTransaction, float prixSousJacentExpiration);
 
 
+
+
+    Option addOption(Option option, long actionId);
 
 }

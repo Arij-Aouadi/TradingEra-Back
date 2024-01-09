@@ -36,12 +36,20 @@ public class Ordre implements Serializable {
     float prixStop;
 
     float prixProfit ;
+
     float profitandloss;
+
+    float prixLimite ;
+
+
     @Enumerated(EnumType.STRING)
     TypeOrdre typeordre;
     String dureeValiditeOrdre;
     @Temporal(TemporalType.TIMESTAMP)
     Date dateOrdre;
+
+    private int quantiteAchat;
+    private int quantiteVente;
 
     @Enumerated(EnumType.STRING)
     TypeStatut statut ;
@@ -61,8 +69,14 @@ public class Ordre implements Serializable {
     @ManyToOne
     @JsonIgnore
     Game game;
+
     @JsonIgnore
     @OneToMany(mappedBy = "ordre", cascade = CascadeType.ALL)
     Set<Historique> historiques;
+
+
+    private void recalculerQuantite() {
+        this.quantite = quantiteAchat + quantiteVente;
+    }
 
 }

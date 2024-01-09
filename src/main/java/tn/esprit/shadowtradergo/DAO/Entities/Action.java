@@ -20,10 +20,10 @@ import java.util.List;
 public class Action {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private Long idA;
+    private Long idAction;
     private String symbole;
     private String name;
-   private Double coursActuel;// ca sera une methode
+    private Double coursActuel;// ca sera une methode
     private Float variationEnPorcentage;
     private Float variation ;
     private Float  ouverture;

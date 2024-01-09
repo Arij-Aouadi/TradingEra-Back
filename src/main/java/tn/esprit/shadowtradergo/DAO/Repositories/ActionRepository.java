@@ -7,6 +7,6 @@ import tn.esprit.shadowtradergo.DAO.Entities.Action;
 import tn.esprit.shadowtradergo.DAO.Entities.Ordre;
 
 public interface ActionRepository extends JpaRepository<Action, Long> {
-    @Query("SELECT a.coursActuel FROM Action a WHERE a.idA = :actionId")
+    @Query("SELECT a.coursActuel FROM Action a WHERE a.idAction = :actionId")
     Double findLatestCoursDeMarche(@Param("actionId") Long actionId);
 }
