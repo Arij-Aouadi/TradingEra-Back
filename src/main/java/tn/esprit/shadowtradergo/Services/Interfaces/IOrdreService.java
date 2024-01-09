@@ -1,8 +1,12 @@
 package tn.esprit.shadowtradergo.Services.Interfaces;
 
+
+import tn.esprit.shadowtradergo.DAO.Entities.Historique;
+import tn.esprit.shadowtradergo.DAO.Entities.Ordre;
+
 import tn.esprit.shadowtradergo.DAO.Entities.*;
 
-import java.util.Date;
+
 import java.util.List;
 
 public interface IOrdreService {

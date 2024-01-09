@@ -5,9 +5,14 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ExpressionException;
 import org.springframework.stereotype.Service;
+
+import tn.esprit.shadowtradergo.DAO.Entities.Historique;
+import tn.esprit.shadowtradergo.DAO.Entities.Ordre;
+
 import tn.esprit.shadowtradergo.DAO.Entities.*;
 import tn.esprit.shadowtradergo.DAO.Repositories.ActionRepository;
 import tn.esprit.shadowtradergo.DAO.Repositories.OptionRepository;
+
 import tn.esprit.shadowtradergo.DAO.Repositories.OrdreRepository;
 import tn.esprit.shadowtradergo.Services.Interfaces.IOrdreService;
 

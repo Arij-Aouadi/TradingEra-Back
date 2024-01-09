@@ -20,5 +20,4 @@ public interface IUserService {
     //User assignAccountToUser(long userId, int accountNum);
 
     public User getConnectedUser();
-     List<User> getRankedPlayers();
 }

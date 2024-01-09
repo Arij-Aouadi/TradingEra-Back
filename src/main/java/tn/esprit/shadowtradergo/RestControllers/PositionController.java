@@ -90,4 +90,22 @@ public class PositionController {
         return new ResponseEntity<>(pourcentages, HttpStatus.OK);
     }
 
+
+
+
+    @GetMapping("/gross-loss")
+    public double getGrossLoss() {
+        return positionService.calculerGrossLoss();
+    }
+
+    @GetMapping("/gross-profit")
+    public double getGrossProfit() {
+        return positionService.calculerGrossProfit();
+    }
+
+    @GetMapping("/net-profit")
+    public double getNetProfit() {
+        return positionService.calculerNetProfit();
+    }
+
 }
