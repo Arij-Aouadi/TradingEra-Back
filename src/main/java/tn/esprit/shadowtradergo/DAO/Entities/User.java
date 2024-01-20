@@ -40,14 +40,15 @@ public class User implements Serializable {
      String relationWithClient ;
      String Profession ;
      String NewQuestions;
-     //changement
-
-    // String TypeProjets;
+     String TypeProjets;
      String TheuserNumber;
      double Solde ;
 
      double revenu ;
      String niveau;
+
+     String badge;
+     int nombreQuizEffectues;
 
     @NotNull
     @Size(min = 8,max = 50)
@@ -55,9 +56,8 @@ public class User implements Serializable {
     //AJOUTER
     int Rank ;
     float score ; //float or int ??
-
-     double revenu;
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+     @JsonIgnore
     Set<Role> role;
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

@@ -1,16 +1,11 @@
 package tn.esprit.shadowtradergo.RestControllers;
 
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.client.RestTemplate;
-import tn.esprit.shadowtradergo.DAO.Entities.*;
-
 import tn.esprit.shadowtradergo.DAO.Entities.Option;
 import tn.esprit.shadowtradergo.DAO.Entities.Ordre;
 import tn.esprit.shadowtradergo.DAO.Entities.User;
-
 import tn.esprit.shadowtradergo.Services.Interfaces.IOptionService;
 
 import java.util.List;
@@ -24,7 +19,12 @@ public class OptionController {
     private IOptionService iOptionService;
 
 
+    @PostMapping("/Option/add")
+    public Option ajouter(@RequestBody Option option){
+        return iOptionService.add(option);
+//
 
+    }
     @GetMapping("/Option/Order")
     public List<Option> afficherOption() {
 
@@ -50,34 +50,20 @@ public class OptionController {
         iOptionService.delete(option);}
 
 
-    @PostMapping("/addOption/{actionId}")
-    public ResponseEntity<Option> addOptionToAction(@RequestBody Option option, @PathVariable long actionId) {
-        // Call the service to add the Option and associate it with the Action
-        Option addedOption = iOptionService.addOption(option, actionId);
+    //option princing
+    @GetMapping("/option-prices")
+    public String getOptionPrices() {
+        final String flaskApiUrl = "http://127.0.0.1:5000/option-prices";
 
-        if (addedOption != null) {
-            // Return a success response with the added Option
-            return ResponseEntity.ok(addedOption);
-        } else {
-            // Return a not found response if the Action with the given ID is not found
-            return ResponseEntity.notFound().build();
-        }
+        // Make a request to the Flask API
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(flaskApiUrl, String.class);
+
+        // Process the result as needed
+        return result;
     }
 
 
 
-        @GetMapping("/calculate-profit-loss")
-        public Float calculateProfitOrLoss(
-                @RequestParam long optionId,
-                @RequestParam TypeOption typeOption,
-                @RequestParam TypeTransaction typeTransaction,
-                @RequestParam float prixSousJacentExpiration
-        ) {
 
-                return  ( iOptionService.CalculerProfitOuPerteOption(optionId,typeOption,typeTransaction,prixSousJacentExpiration));
-            }
-        }
-
-
-
-
+}

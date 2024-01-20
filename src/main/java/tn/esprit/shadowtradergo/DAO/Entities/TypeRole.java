@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 public enum TypeRole implements GrantedAuthority
 {
+
     ADMIN,CLIENT,AGENT;
 
 
