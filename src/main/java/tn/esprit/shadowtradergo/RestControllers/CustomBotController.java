@@ -13,10 +13,10 @@ import tn.esprit.shadowtradergo.dto.ChatGptResponse;
 @RestController
 @RequestMapping("/bot")
 public class CustomBotController {
-    @Value("${openai.model}")
+    @Value("${openai.model1}")
     private String model;
 
-    @Value(("${openai.api.url}"))
+    @Value(("${openai.api.url1}"))
     private String apiURL;
 
     @Autowired

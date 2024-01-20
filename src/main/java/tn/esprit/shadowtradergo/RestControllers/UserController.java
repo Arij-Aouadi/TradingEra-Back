@@ -19,13 +19,12 @@ public class UserController {
     @GetMapping("/admins/user/showall")
     public List<User> afficherUser() {
 
-        List <User> list= iUserService.selectAll();
-        return list ;
+        List<User> list = iUserService.selectAll();
+        return list;
     }
 
     @GetMapping("/afficherUserAvecId/{id}")
-    public User afficherUserAvecId(@PathVariable long id)
-    {
+    public User afficherUserAvecId(@PathVariable long id) {
         return iUserService.selectById(id);
 
     }
@@ -46,8 +45,19 @@ public class UserController {
         return iUserService.getCurrentUser().getUsername();
     }
 
+    @GetMapping("/NiveauUser")
+    public  String Niveau (){
+        return iUserService.getCurrentUser().getNiveau();
+    }
+
+
     /*@PutMapping("/assignAccountToUser/{id}/{num}")
     public User assignSkierToPiste(@PathVariable long id, @PathVariable int num){
         return iUserService.assignAccountToUser(id,num);
     }*/
+
+
+
+
+
 }

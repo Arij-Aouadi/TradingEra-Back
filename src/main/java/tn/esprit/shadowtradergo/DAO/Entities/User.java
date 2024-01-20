@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -41,19 +42,31 @@ public class User implements Serializable {
      String NewQuestions;
      String TypeProjets;
      String TheuserNumber;
-     int score;
+     double Solde ;
+
+     double revenu ;
+     String niveau;
+
      String badge;
      int nombreQuizEffectues;
 
     @NotNull
     @Size(min = 8,max = 50)
     String password ;
+    //AJOUTER
+    int Rank ;
+    float score ; //float or int ??
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
      @JsonIgnore
     Set<Role> role;
     @JsonIgnore
-    @OneToOne
-    Position position ;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    Set<Position> positions;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id); // Utilisez uniquement l'ID pour éviter la récursion
+    }
+
     public String getMail() {
         return email;
     }
@@ -62,4 +75,11 @@ public class User implements Serializable {
     public User(String username, String email, String encode) {
 
     }
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    Set<Historique> historiques;
+    @JsonIgnore
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    Set<Game> games;
 }

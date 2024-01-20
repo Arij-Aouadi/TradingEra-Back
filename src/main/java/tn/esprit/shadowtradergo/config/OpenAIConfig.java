@@ -10,7 +10,7 @@ import javax.servlet.MultipartConfigElement;
 
 @Configuration
 public class OpenAIConfig {
-    @Value("${openai.api.key}")
+    @Value("${openai.api.key1}")
     String openaiApiKey;
 
     @Bean

@@ -21,7 +21,7 @@ import java.util.List;
 public class Option implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    long id;
+    long idOption;
     float prixExerciceOption;
     @Temporal(TemporalType.DATE )
     Date DateExpirationOption;
@@ -30,14 +30,16 @@ public class Option implements Serializable {
     float bas ;
     float  dernier ;
     float volume ;
+    float prime ;
     @Enumerated(EnumType.STRING)
-    Etat etat;
+
+    TypeOption typeOption;
     @OneToMany(mappedBy ="option")
     @JsonIgnore
 
-    List<Ordre> ListO ;
+    List<Ordre> ordreOption ;
     @ManyToOne
-            @JsonIgnore
+    @JsonIgnore
     Action action1 ;
 
 

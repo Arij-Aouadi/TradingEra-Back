@@ -3,6 +3,7 @@ package tn.esprit.shadowtradergo.Services.Interfaces;
 import tn.esprit.shadowtradergo.DAO.Entities.Position;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IPositionService {
     List<Position> selectall();
@@ -22,4 +23,12 @@ public interface IPositionService {
     Position getById(long idP);
 
     void deleteAll(List<Position> list);
+
+    public double calculerProfit(Position position) ;
+
+
+
+    double calculerGrossProfit();
+    double calculerGrossLoss();
+
 }

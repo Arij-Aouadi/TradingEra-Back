@@ -22,4 +22,5 @@ public interface IActionService {
     Action getById(long idA);
 
     void deleteAll(List<Action> list);
+    
 }

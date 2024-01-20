@@ -12,7 +12,10 @@ import tn.esprit.shadowtradergo.DAO.Entities.User;
 import tn.esprit.shadowtradergo.DAO.Repositories.UserRepository;
 import tn.esprit.shadowtradergo.Services.Interfaces.IUserService;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @AllArgsConstructor
@@ -20,9 +23,6 @@ import java.util.List;
 @NoArgsConstructor
 
 public class UserService implements IUserService {
-
-
-
 
     @Autowired
     private UserRepository userRepository;
@@ -105,7 +105,7 @@ public class UserService implements IUserService {
         return this.selectById(2L);
     }
     public void attribuerBadge(User utilisateur, String typeQuiz) {
-        int score = utilisateur.getScore();
+        float score = utilisateur.getScore();
         utilisateur.setNombreQuizEffectues(utilisateur.getNombreQuizEffectues() + 1);
 
         if (typeQuiz.equals("Amateur")) {

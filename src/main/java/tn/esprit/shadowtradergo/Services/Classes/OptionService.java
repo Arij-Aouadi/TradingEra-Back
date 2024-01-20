@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @NoArgsConstructor
 public class OptionService implements IOptionService {
-@Autowired
+    @Autowired
     OptionRepository optionRepository ;
 
     @Override
@@ -36,7 +36,7 @@ public class OptionService implements IOptionService {
 
     @Override
     public List<Option> selectAll() {
-      return   optionRepository.findAll();
+        return   optionRepository.findAll();
     }
 
     @Override
