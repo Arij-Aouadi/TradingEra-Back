@@ -35,6 +35,11 @@ public class ThemeController {
             return ResponseEntity.notFound().build();
         }
     }
+    @DeleteMapping("/{themeId}")
+    public ResponseEntity<Void> deleteTheme(@PathVariable Long themeId) {
+        themeService.deleteTheme(themeId);
+        return ResponseEntity.noContent().build();
+    }
 
     @PostMapping
     public ResponseEntity<String> createTheme(@RequestBody Theme theme) {

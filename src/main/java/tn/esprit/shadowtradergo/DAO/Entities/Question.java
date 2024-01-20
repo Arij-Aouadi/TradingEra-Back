@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -31,6 +32,10 @@ public class Question implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "question_id")
-    private List<Choice> choices;
+    private List<UserAnswer> userAnswers;
+    @ElementCollection
+    @CollectionTable(name = "correct_answers", joinColumns = @JoinColumn(name = "question_id"))
+    @Column(name = "answer")
+    private Set<String> correctAnswers;
 
 }

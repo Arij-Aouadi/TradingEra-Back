@@ -1,6 +1,8 @@
 package tn.esprit.shadowtradergo.RestControllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.shadowtradergo.DAO.Entities.User;
 import tn.esprit.shadowtradergo.Services.Interfaces.IUserService;
@@ -27,6 +29,7 @@ public class UserController {
         return iUserService.selectById(id);
 
     }
+
 
     @PutMapping ("/modifierUser")
     public User edit(@RequestBody User user){

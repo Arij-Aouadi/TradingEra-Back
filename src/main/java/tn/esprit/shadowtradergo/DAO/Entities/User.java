@@ -41,10 +41,15 @@ public class User implements Serializable {
      String NewQuestions;
      String TypeProjets;
      String TheuserNumber;
+     int score;
+     String badge;
+     int nombreQuizEffectues;
+
     @NotNull
     @Size(min = 8,max = 50)
     String password ;
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+     @JsonIgnore
     Set<Role> role;
     @JsonIgnore
     @OneToOne

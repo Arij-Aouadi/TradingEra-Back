@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import tn.esprit.shadowtradergo.DAO.Entities.User;
 import tn.esprit.shadowtradergo.DAO.Repositories.UserRepository;
 import tn.esprit.shadowtradergo.Services.Interfaces.IUserService;
@@ -28,6 +29,9 @@ public class UserService implements IUserService {
     @Override
     public List<User> selectall() {
         return userRepository.findAll();
+    }
+    public List<User> getAllUtilisateurs() {
+        return userRepository.findAll(); // This retrieves all users from the database
     }
 
     @Override
@@ -100,5 +104,33 @@ public class UserService implements IUserService {
     public User getConnectedUser(){
         return this.selectById(2L);
     }
+    public void attribuerBadge(User utilisateur, String typeQuiz) {
+        int score = utilisateur.getScore();
+        utilisateur.setNombreQuizEffectues(utilisateur.getNombreQuizEffectues() + 1);
+
+        if (typeQuiz.equals("Amateur")) {
+            // Logique de badges pour le quiz Amateur
+            if (score >= 8) {
+                utilisateur.setBadge("Amateur Expert");
+            } else if (score >= 5) {
+                utilisateur.setBadge("Amateur Intermédiaire");
+            } else {
+                utilisateur.setBadge("Amateur Débutant");
+            }
+        } else if (typeQuiz.equals("Professionnel")) {
+            // Logique de badges pour le quiz Professionnel
+            if (score >= 8) {
+                utilisateur.setBadge("Professionnel Expert");
+            } else if (score >= 5) {
+                utilisateur.setBadge("Professionnel Intermédiaire");
+            } else {
+                utilisateur.setBadge("Professionnel Débutant");
+            }
+        } else {
+            // Gérer d'autres types de quiz si nécessaire
+            utilisateur.setBadge("Autre Type de Quiz");
+        }
+    }
+
 
 }

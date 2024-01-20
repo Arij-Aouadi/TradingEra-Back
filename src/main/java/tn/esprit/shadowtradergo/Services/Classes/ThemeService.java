@@ -7,16 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.shadowtradergo.DAO.Entities.Theme;
 import tn.esprit.shadowtradergo.DAO.Repositories.ThemeRepository;
+import tn.esprit.shadowtradergo.Services.Interfaces.IThemeService;
 
 import java.util.List;
 
 @AllArgsConstructor
 @Service
 @NoArgsConstructor
-public class ThemeService {
+public class ThemeService implements IThemeService {
     @Autowired
     private ThemeRepository themeRepository;
 
+    @Override
+    public void deleteTheme(Long themeId) {
+        themeRepository.deleteById(themeId);
+        // Ajoutez toute logique supplémentaire ici, si nécessaire
+    }
     public List<Theme> getAllThemes() {
         return themeRepository.findAll();
     }

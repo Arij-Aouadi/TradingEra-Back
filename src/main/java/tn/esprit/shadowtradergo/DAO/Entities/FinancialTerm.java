@@ -1,9 +1,9 @@
 package tn.esprit.shadowtradergo.DAO.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -23,23 +23,14 @@ public class FinancialTerm implements Serializable {
     private Long id;
     private String term;
     private String definition;
+    private String imageUrl; // Ajoutez ce champ pour stocker l'URL de l'image
+    private String videoUrl;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "theme_id")
     private Theme theme;
-    @ElementCollection
-    @CollectionTable(name = "financial_term_photos", joinColumns = @JoinColumn(name = "financial_term_id"))
-    @Column(name = "photo_url")
-    private List<String> photos;
 
-    @Lob
-    @Column(name = "statistics", length = Integer.MAX_VALUE)
-    private String statistics;
-
-    @Lob
-    @Column(name = "examples", length = Integer.MAX_VALUE)
-    private String examples;
 
     // Autres champs pertinents
 
